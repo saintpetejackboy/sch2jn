@@ -1,0 +1,21 @@
+{
+  "name": "SCH2JN Dashboard",
+  "short_name": "SCH2JN",
+  "description": "Dashboard for Subcontractor to JobNimbus integration",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1a1a1a",
+	  "icons": [
+		{
+		  "src": "/static/images/sweat.png",
+		  "sizes": "192x192",
+		  "type": "image/png"
+		},
+		{
+		  "src": "/static/images/sweat.png",
+		  "sizes": "512x512",
+		  "type": "image/png"
+		}
+	  ]
+}

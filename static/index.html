@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCH2JN</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Ensure proper emoji display -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/static/images/favicon-32x32.png">
+</head>
+<body>
+  <!-- Background animation (handled by JS) -->
+  <div class="bg-animation"></div>
+  
+  <div class="container">
+    <div class="header">
+      <h1 class="logo">SCH2JN</h1>
+      <div class="header-actions">
+        <button class="header-btn" id="readme-btn" onclick="openModal('readme')" title="Documentation">📖</button>
+        <button class="header-btn" id="config-btn" onclick="openModal('config')" title="Configuration">⚙️</button>
+        <a href="https://github.com/saintpetejackboy/sch2jn" target="_blank" class="header-btn" id="github-link" title="GitHub Repository">📦</a>
+      </div>
+    </div>
+    
+    <div class="logs-container">
+      <div id="logs">Loading logs...</div>
+    </div>
+    
+    <div class="button-container">
+      <!-- Note: once tests run, this button’s label is updated to "Test Results" and re‐running is prevented -->
+      <button class="action-btn" id="run-tests"><span class="emoji">🧪</span> Run Tests</button>
+      <button class="action-btn" id="clear-logs"><span class="emoji">🧹</span> Clear Logs</button>
+    </div>
+  </div>
+
+  <!-- Reusable Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title"><span class="emoji">⚙️</span> Configuration</h2>
+        <button class="close-modal" onclick="closeModal()">❌</button>
+      </div>
+      
+      <div class="modal-tabs">
+        <div class="modal-tab active" data-tab="config" onclick="switchTab('config')">⚙️ Configuration</div>
+        <div class="modal-tab" data-tab="readme" onclick="switchTab('readme')">📖 Documentation</div>
+        <!-- The Test Results tab will be appended dynamically if tests have been run -->
+      </div>
+      
+      <div class="modal-body">
+        <div id="config-content" class="tab-content active"></div>
+        <div id="readme-content" class="tab-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/modal.js"></script>
+  <script src="/static/js/logs.js"></script>
+  <script src="/static/js/tests.js"></script>
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

@@ -1,9 +1,5 @@
 # SCH2JN 🚀
 
-[![Rust](https://img.shields.io/badge/rust-stable-brightgreen.svg)](https://www.rust-lang.org/)
-[![Actix Web](https://img.shields.io/badge/actix--web-4.0-blue.svg)](https://actix.rs/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 A lightweight bridge server that forwards requests from Subcontractor Hub to Job Nimbus via API.
 
 ## Features ✨

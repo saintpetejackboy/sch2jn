@@ -1,0 +1,749 @@
+/* Reset and base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #e0e0e0;
+  background-color: #121212;
+}
+
+body {
+  position: relative;
+}
+
+/* Background animation */
+.bg-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url('/static/images/background.webp');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.65) blur(1px) opacity(0.8);
+  animation: subtle-pulse 15s ease-in-out infinite;
+}
+
+@keyframes subtle-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* Main container */
+.container {
+  padding: 15px;
+  max-width: 90vw;
+  margin: 15px auto 30px auto;
+  background-color: rgba(30, 30, 30, 0.8);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  backdrop-filter: blur(1px);
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  letter-spacing: 1px;
+  background: linear-gradient(45deg, #cf8d30, #ffb938);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/static/images/background.webp');
+  background-size: 200%;
+  background-position: center;
+  opacity: 0.2;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.header-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/static/images/background.webp');
+  background-size: 300%;
+  background-position: center;
+  opacity: 0.1;
+  filter: brightness(0.8) contrast(1.5);
+  z-index: -1;
+}
+
+.header-btn:hover {
+  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header-btn:active {
+  transform: translateY(1px);
+}
+
+/* Logs container */
+.logs-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+#logs {
+  background-color: rgba(20, 20, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  height: 50vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 15px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  white-space: pre-wrap;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+  line-height: 1.4;
+  position: relative;
+}
+
+#logs::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(to top, rgba(20, 20, 20, 0.9), transparent);
+  pointer-events: none;
+}
+
+/* Button container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: auto;
+  padding-bottom: 10px;
+}
+
+/* Button styling */
+.action-btn {
+  background-color: rgba(50, 50, 50, 0.9);
+  border: none;
+  color: #e0e0e0;
+  padding: 10px 18px 10px 14px;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/static/images/background.webp');
+  background-size: 300%;
+  background-position: center;
+  opacity: 0.1;
+  filter: brightness(0.8);
+  z-index: -1;
+}
+
+.action-btn:hover:not(:disabled) {
+  background-color: rgba(60, 60, 60, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.action-btn:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.action-btn .emoji {
+  font-size: 18px;
+}
+
+/* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: rgba(30, 30, 30, 0.95);
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: modalIn 0.3s ease-out;
+  position: relative;
+}
+
+.modal-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/static/images/background.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes modalOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-20px); }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.close-modal {
+  color: #ff5555;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  background: none;
+  border: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-modal:hover {
+  transform: scale(1.2);
+  background-color: rgba(255, 85, 85, 0.1);
+}
+
+.modal-body {
+  padding: 10px 0;
+  overflow-x: hidden;
+}
+
+.modal-tabs {
+  display: flex;
+  border-bottom: 1px solid #444;
+  margin-bottom: 15px;
+}
+
+.modal-tab {
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.modal-tab.active {
+  border-bottom: 2px solid #cf8d30;
+  background-color: rgba(207, 141, 48, 0.1);
+}
+
+.modal-tab:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.required-notice {
+  background-color: rgba(255, 100, 100, 0.1);
+  border-left: 4px solid #ff5555;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 0 4px 4px 0;
+}
+
+.highlight {
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+th {
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar styling */
+.modal-content::-webkit-scrollbar,
+#logs::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track,
+#logs::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+  background: rgba(30, 30, 30, 0.9);
+}
+
+.modal-content::-webkit-scrollbar-thumb,
+#logs::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+/* Diablo II loot colors for logs */
+.timestamp {
+  color: #cf8d30; /* Orange/Gold - Unique items */
+  font-weight: bold;
+}
+
+.emoji {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+.log-entry {
+  padding: 3px 0;
+  border-bottom: 1px dotted #333;
+  margin-bottom: 3px;
+}
+
+.log-normal {
+  color: #ffffff; /* White - Normal items */
+}
+
+.log-test {
+  color: #9C27B0;
+  font-weight: 500;
+}
+
+.log-success {
+  color: #00ff00; /* Green - Set items */
+}
+
+.log-warning {
+  color: #ffff00; /* Yellow - Rare items */
+}
+
+.log-error {
+  color: #ff4040; /* Red - Error messages */
+}
+
+/* HTTP status codes */
+.status-2xx {
+  color: #2E7D32;
+  font-weight: bold;
+}
+
+.status-3xx {
+  color: #0288D1;
+  font-weight: bold;
+}
+
+.status-4xx {
+  color: #D84315;
+  font-weight: bold;
+}
+
+.status-5xx {
+  color: #C62828;
+  font-weight: bold;
+}
+
+/* Numbers */
+.number {
+  color: #6969ff;
+  font-weight: bold;
+}
+
+/* Compiler output styling */
+details {
+  background-color: rgba(50, 50, 50, 0.3);
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #aaa;
+}
+
+.ok {
+  color: #00ff00;
+}
+
+.FAILED {
+  color: #ff4040;
+}
+
+/* Readme styling */
+.markdown-content {
+  line-height: 1.6;
+}
+
+.markdown-content h1 {
+  font-size: 24px;
+  margin-top: 0;
+  border-bottom: 1px solid #444;
+  padding-bottom: 8px;
+}
+
+.markdown-content h2 {
+  font-size: 20px;
+  margin-top: 20px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+}
+
+.markdown-content h3 {
+  font-size: 18px;
+  margin-top: 18px;
+}
+
+.markdown-content p {
+  margin: 12px 0;
+}
+
+.markdown-content ul, .markdown-content ol {
+  padding-left: 20px;
+}
+
+.markdown-content code {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.markdown-content pre {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.markdown-content pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .container {
+    margin: 0;
+    border-radius: 0;
+    min-height: 80vh;
+  }
+  
+  #logs {
+    height: calc(100vh - 150px);
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: 10px auto;
+  }
+  
+  .button-container {
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+  
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Emoji font stack to ensure proper emoji rendering */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, 
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+}
+
+/* Specific emoji styling */
+.emoji {
+  font-family: 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif !important;
+}
+
+
+/* Improve test output display */
+.log-test {
+  color: #9C27B0;
+  font-weight: 500;
+}
+
+/* Collapsible sections in logs */
+details {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+  user-select: none;
+}
+
+details summary:hover {
+  color: #000;
+}
+
+/* Improve timestamp display in local time */
+.timestamp {
+  font-family: monospace;
+  color: #607D8B;
+  padding: 0 0.25rem;
+  border-radius: 2px;
+  font-size: 0.9em;
+}
+
+/* Nicer status code coloring */
+.status-2xx {
+  color: #2E7D32;
+  font-weight: bold;
+}
+
+.status-3xx {
+  color: #0288D1;
+  font-weight: bold;
+}
+
+.status-4xx {
+  color: #D84315;
+  font-weight: bold;
+}
+
+.status-5xx {
+  color: #C62828;
+  font-weight: bold;
+}
+
+/* Notification system */
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  opacity: 1;
+  transition: opacity 0.5s;
+  z-index: 1000;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+.notification.success {
+  background-color: #43a047;
+}
+
+.notification.warning {
+  background-color: #fb8c00;
+}
+
+.notification.error {
+  background-color: #e53935;
+}
+
+.notification .emoji {
+  margin-right: 8px;
+}
+
+/* Improve test output formatting */
+.test-summary {
+  background-color: rgba(156, 39, 176, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.test-details {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+  white-space: pre-wrap;
+}
+
+/* Improve emoji display in buttons */
+.action-btn .emoji, 
+.header-btn .emoji {
+  margin-right: 6px;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+}
+
+/* Fix the Github emoji */
+#github-link {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+}
+
+/* Animation for action buttons */
+.action-btn {
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Make timestamps more readable */
+#logs .timestamp {
+  display: inline-block;
+  min-width: 180px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* === Custom styles for updated test & log buttons === */
+#run-tests {
+  min-width: 140px;
+  height: 40px;
+  font-size: 16px;
+}
+
+#clear-logs {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 16px;
+  padding: 4px;
+  cursor: pointer;
+}
